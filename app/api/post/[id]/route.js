@@ -1,12 +1,13 @@
 
-// url: http://localhost:3000/api/posts/2343243243434343
 import client from "@/app/libs/prismadb";
 import { NextResponse } from "next/server";
 
+
+// url: http://localhost:3000/api/post/
 export const GET = async (request, { params }) => {
     try {
         const { id } = params;
-        const post = await client.post.findUnique({
+        const post = await client.Player.findUnique({
             where: {
                 id
             }
@@ -21,11 +22,18 @@ export const GET = async (request, { params }) => {
     }
 }
 
-export const PATCH = async (request) => {
+export const PATCH = async (request, { params }) => {
     try {
         const body = await request.json();
-        const { id } = body;
-        const { name, team, MPG, PPG, RPG, APG, SPG, BPG } = body;
+        const { id } = params;
+        const { name,
+            team,
+            MPG,
+            PPG,
+            RPG,
+            APG,
+            SPG,
+            BPG, } = body;
 
         const updatePlayer = await client.player.update({
             where: {
@@ -42,19 +50,16 @@ export const PATCH = async (request) => {
                 BPG,
             }
         });
-
         if (!updatePlayer) {
-            return NextResponse.json({ status: 404 }, { message: "Player not found" });
+            return NextResponse.json({ status: 404 }, { message: "Post not found" })
         }
-
         return NextResponse.json(updatePlayer);
+
     } catch (error) {
-        console.error(error);
-        return NextResponse.json(
-            { status: 500, message: "Error updating player", error: error.message }
-        );
+        return NextResponse.json({ status: 500 }, { message: "Error updating post", error })
     }
-};
+}
+
 
 
 export const DELETE = async (request, { params }) => {
@@ -73,5 +78,7 @@ export const DELETE = async (request, { params }) => {
     }
 };
 
-
+export const FETCH = async () => {
+    return await GET();
+}
 
