@@ -30,4 +30,20 @@ export const POST = async (req) => {
 };
 
 
+export const GET = async () => {
+    try {
+        const players = await client.player.findMany();
+        return NextResponse.json(players);
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json(
+            { message: "Error getting players", error: error.message },
+            { status: 500 }
+        );
+    }
+}
+
+
+
+
 

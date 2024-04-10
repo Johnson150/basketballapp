@@ -21,44 +21,57 @@ export const GET = async (request, { params }) => {
     }
 }
 
-export const PATCH = async (request, { params }) => {
+export const PATCH = async (request) => {
     try {
         const body = await request.json();
-        const { id } = params;
-        const { title, description } = body;
+        const { id } = body;
+        const { name, team, MPG, PPG, RPG, APG, SPG, BPG } = body;
 
-        const updatePost = await client.post.update({
+        const updatePlayer = await client.player.update({
             where: {
                 id
             },
             data: {
-                title,
-                description
+                name,
+                team,
+                MPG,
+                PPG,
+                RPG,
+                APG,
+                SPG,
+                BPG,
             }
         });
-        if (!updatePost) {
-            return NextResponse.json({ status: 404 }, { message: "Post not found" })
-        }
-        return NextResponse.json(updatePost);
 
+        if (!updatePlayer) {
+            return NextResponse.json({ status: 404 }, { message: "Player not found" });
+        }
+
+        return NextResponse.json(updatePlayer);
     } catch (error) {
-        return NextResponse.json({ status: 500 }, { message: "Error updating post", error })
+        console.error(error);
+        return NextResponse.json(
+            { status: 500, message: "Error updating player", error: error.message }
+        );
     }
-}
+};
+
 
 export const DELETE = async (request, { params }) => {
     try {
         const { id } = params;
-        await client.post.delete({
+        await client.player.delete({
             where: {
                 id
             }
         });
-        return NextResponse.json({ status: 200 }, { message: "Post deleted" });
+        return NextResponse.json({ status: 200 }, { message: "Player deleted" });
 
     } catch (error) {
-        return NextResponse.json({ status: 500 }, { message: "Error deleting post", error })
+        console.error(error); // Log the error for debugging purposes
+        return NextResponse.json({ status: 500 }, { message: "Error deleting player", error });
     }
-}
+};
+
 
 
