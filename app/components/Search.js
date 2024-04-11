@@ -1,12 +1,17 @@
 "use client"
 import React, { useState } from "react";
-import Post from "./Post"; // Assuming Post is your player display component
+import Post from "./Post"; // Importing the Post component for displaying individual player details
 
-const PlayersList = ({ players }) => {
-    const [searchTerm, setSearchTerm] = useState("");
+const PlayersList = ({ players = [] }) => {
+    const [inputValue, setInputValue] = useState(""); // To hold the value of the input field
+    const [searchTerm, setSearchTerm] = useState(""); // To hold the value used for filtering
 
-    const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    const handleSearch = () => {
+        setSearchTerm(inputValue); // Update searchTerm with the current inputValue when search is clicked
     };
 
     const filteredPlayers = players.filter((player) =>
@@ -18,10 +23,13 @@ const PlayersList = ({ players }) => {
             <input
                 type="text"
                 placeholder="Search by name..."
-                value={searchTerm}
-                onChange={handleSearchChange}
+                value={inputValue}
+                onChange={handleInputChange}
                 className="p-2 my-2"
             />
+            <button onClick={handleSearch} className="p-2 my-2 bg-blue-500 text-white">
+                Search
+            </button>
             <ul>
                 {filteredPlayers.map((player) => (
                     <Post key={player.id} player={player} />
