@@ -12,3 +12,16 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+// schema.prisma
+model Player {
+  id   String  @id @default(auto()) @map("_id") @db.ObjectId
+  name String?
+  team String?
+  MPG  Float?
+  PPG  Float?
+  RPG  Float?
+  APG  Float?
+  SPG  Float?
+  BPG  Float?
+}
