@@ -7,7 +7,7 @@ export const POST = async (req) => {
     try {
         const body = await req.json();
         const { name, team, MPG, PPG, RPG, APG, SPG, BPG } = body;
-        const newPlayer = await client.player.create({ // Use 'player' instead of 'post'
+        const newPlayer = await client.player.create({
             data: {
                 name,
                 team,
