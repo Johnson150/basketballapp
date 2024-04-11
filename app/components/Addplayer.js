@@ -37,8 +37,7 @@ const Addplayer = () => {
         <div>
             <button
                 onClick={() => setShowModal(true)}
-                className="bg-blue-700 text-white p-3 cursor-pointer"
-            >
+                className="bg-blue-700 text-white p-3 cursor-pointer">
                 Add New Player
             </button>
             <Modal showModal={showModal} setShowModal={setShowModal}>

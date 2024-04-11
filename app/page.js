@@ -1,5 +1,6 @@
 import PlayerList from "./components/Playerlist";
 import Addplayer from "./components/Addplayer"; // Corrected component name
+import EditPlayer from "./components/Editplayer";
 
 async function getData() {
   const res = await fetch('http://localhost:3000/api/post', { cache: "no-cache" })
@@ -16,6 +17,7 @@ const Page = async () => {
   return (
     <main className="flex min-h-screen flex-col justify-between p-24">
       <PlayerList player={posts} />
+      <EditPlayer />
       <Addplayer /> {/* Added the AddPlayer component */}
     </main>
   );
