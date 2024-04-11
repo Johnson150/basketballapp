@@ -9,7 +9,12 @@ const Addplayer = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setInput((prevState) => ({ ...prevState, [name]: value }));
+        // Convert numeric fields from strings to numbers
+        const isNumericField = ['MPG', 'PPG', 'RPG', 'APG', 'SPG', 'BPG'].includes(name);
+        setInput(prevState => ({
+            ...prevState,
+            [name]: isNumericField ? parseFloat(value) : value
+        }));
     };
 
     const handleSubmit = (e) => {
@@ -24,6 +29,7 @@ const Addplayer = () => {
             .finally(() => {
                 setInput({});
                 setShowModal(false);
+                window.location.reload();
             });
     };
 
@@ -43,7 +49,7 @@ const Addplayer = () => {
                         placeholder="Name"
                         name="name"
                         className="w-full p-2 mb-3"
-                        value={input.name}
+                        value={input.name || ''}
                         onChange={handleChange}
                     />
                     <input
@@ -51,7 +57,7 @@ const Addplayer = () => {
                         placeholder="Team"
                         name="team"
                         className="w-full p-2 mb-3"
-                        value={input.team}
+                        value={input.team || ''}
                         onChange={handleChange}
                     />
                     <input
@@ -59,48 +65,54 @@ const Addplayer = () => {
                         placeholder="MPG"
                         name="MPG"
                         className="w-full p-2 mb-3"
-                        value={input.MPG}
+                        value={input.MPG || ''}
                         onChange={handleChange}
+                        step="0.1"
                     />
                     <input
                         type="number"
                         placeholder="PPG"
                         name="PPG"
                         className="w-full p-2 mb-3"
-                        value={input.PPG}
+                        value={input.PPG || ''}
                         onChange={handleChange}
+                        step="0.1"
                     />
                     <input
                         type="number"
                         placeholder="RPG"
                         name="RPG"
                         className="w-full p-2 mb-3"
-                        value={input.RPG}
+                        value={input.RPG || ''}
                         onChange={handleChange}
+                        step="0.1"
                     />
                     <input
                         type="number"
                         placeholder="APG"
                         name="APG"
                         className="w-full p-2 mb-3"
-                        value={input.APG}
+                        value={input.APG || ''}
                         onChange={handleChange}
+                        step="0.1"
                     />
                     <input
                         type="number"
                         placeholder="SPG"
                         name="SPG"
                         className="w-full p-2 mb-3"
-                        value={input.SPG}
+                        value={input.SPG || ''}
                         onChange={handleChange}
+                        step="0.1"
                     />
                     <input
                         type="number"
                         placeholder="BPG"
                         name="BPG"
                         className="w-full p-2 mb-3"
-                        value={input.BPG}
+                        value={input.BPG || ''}
                         onChange={handleChange}
+                        step="0.1"
                     />
                     <button type="submit" className="bg-blue-700 text-white px-5 py-2">
                         Submit
