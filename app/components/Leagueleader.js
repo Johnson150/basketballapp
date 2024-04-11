@@ -1,32 +1,46 @@
-import React from 'react';
+"use client";
+import React, { useState } from "react";
 
-const LeagueLeaders = ({ players = [] }) => { // Default `players` to an empty array if undefined
-    const findCategoryLeader = (category) => {
-        return players.reduce((leader, player) => {
-            return (leader[category] || 0) > player[category] ? leader : player;
-        }, {}); // Ensure the initial value is provided
+const LeagueLeaders = ({ players }) => {
+    const [category, setCategory] = useState("MPG");
+
+    // Function to sort players based on selected category
+    const sortPlayersByCategory = (category) => {
+        return players.sort((a, b) => b[category] - a[category]).slice(0, 5);
     };
 
-    const categories = ['MPG', 'PPG', 'RPG', 'APG', 'SPG', 'BPG'];
-
-    // Guard check to only process if `players` is not empty
-    const leaders = players.length > 0 ? categories.map(category => ({
-        category,
-        player: findCategoryLeader(category)
-    })) : [];
-
-    return (
-        <div>
-            <h2>League Leaders</h2>
-            {leaders.length > 0 ? (
+    // Function to render list of top players for selected category
+    const renderTopPlayers = (category) => {
+        const topPlayers = sortPlayersByCategory(category);
+        return (
+            <div>
+                <h2>Top 5 Players - {category}</h2>
                 <ul>
-                    {leaders.map(({ category, player }) => (
-                        <li key={category}>
-                            <strong>{category}:</strong> {player.name} - {player[category]}
+                    {topPlayers.map((player, index) => (
+                        <li key={index}>
+                            {player.name} - {player[category]}
                         </li>
                     ))}
                 </ul>
-            ) : <p>No player data available.</p>}
+            </div>
+        );
+    };
+
+    return (
+        <div>
+            <h1>League Leaders</h1>
+            <div>
+                <label htmlFor="category">Select Category: </label>
+                <select id="category" onChange={(e) => setCategory(e.target.value)}>
+                    <option value="MPG">MPG</option>
+                    <option value="PPG">PPG</option>
+                    <option value="RPG">RPG</option>
+                    <option value="APG">APG</option>
+                    <option value="SPG">SPG</option>
+                    <option value="BPG">BPG</option>
+                </select>
+            </div>
+            {renderTopPlayers(category)}
         </div>
     );
 };
