@@ -1,12 +1,12 @@
 import React from 'react';
 import Player from './Player';
 
-const PlayerList = ({ players }) => {
-    console.log("I am in PlayerList", players);
+const PlayerList = ({ player }) => {
+    console.log("I am in PlayerList", player);
 
     return (
         <ul>
-            {players.map((player) => (
+            {player.map((player) => (
                 <Player player={player} key={player.id} />
             ))}
         </ul>
