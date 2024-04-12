@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import SearchPlayer from "../components/SearchPlayer";
 
 const PlayersList = ({ player }) => {
     const [inputValue, setInputValue] = useState(""); // To hold the value of the input field
@@ -8,7 +7,7 @@ const PlayersList = ({ player }) => {
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
-    };    
+    };
 
     const handleSearch = () => {
         setSearchTerm(inputValue.toLowerCase()); // Update searchTerm with the current inputValue when search is clicked
@@ -19,7 +18,7 @@ const PlayersList = ({ player }) => {
     );
 
     console.log("Filtered Players:", filteredPlayers);
-    
+
     return (
         <div>
             <input

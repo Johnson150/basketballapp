@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import axios from "axios";
-
+import { useRouter } from "next/navigation";
 const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
+    const Router = useRouter();
     const [showEditModal, setShowEditModal] = useState(false);
     const [playerToEdit, setPlayerToEdit] = useState({ ...player });
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -28,7 +29,7 @@ const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
             })
             .finally(() => {
                 setShowEditModal(false);
-                window.location.reload();
+                Router.refresh();
             });
     };
 
@@ -43,7 +44,7 @@ const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
             })
             .finally(() => {
                 setShowDeleteModal(false);
-                window.location.reload();
+                Router.refresh();
             });
     };
 

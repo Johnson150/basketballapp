@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Addplayer = () => {
+    const Router = useRouter()
     const [showModal, setShowModal] = useState(false);
     const [input, setInput] = useState({});
 
@@ -29,7 +31,7 @@ const Addplayer = () => {
             .finally(() => {
                 setInput({});
                 setShowModal(false);
-                window.location.reload();
+                Router.refresh();
             });
     };
 

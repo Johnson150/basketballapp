@@ -9,7 +9,7 @@ const PlayerList = ({ players }) => {
     const [inputValue, setInputValue] = useState(""); // To hold the value of the input field
     const [searchTerm, setSearchTerm] = useState(""); // To hold the value used for filtering
 
-    
+
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
@@ -40,16 +40,16 @@ const PlayerList = ({ players }) => {
             {/* Render the list of players */}
             <ul>
                 {filteredPlayers.map((player) => (
-                    <Player 
-                        key={player.id} 
-                        player={player} 
-                        setShowEditModal={setShowEditModal} 
-                        setShowDeleteModal={setShowDeleteModal} 
+                    <Player
+                        key={player.id}
+                        player={player}
+                        setShowEditModal={setShowEditModal}
+                        setShowDeleteModal={setShowDeleteModal}
                     />
                 ))}
             </ul>
 
-            
+
         </div>
     );
 };
