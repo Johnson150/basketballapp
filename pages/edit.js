@@ -3,6 +3,7 @@ import PlayerList from '../components/Playerlist';
 import Addplayer from '../components/Addplayer';
 import Header from '../components/header';
 import '../app/globals.css';
+import Footer from '../components/footer';
 const Add = () => {
     const [posts, setPosts] = useState([]);
 
@@ -29,6 +30,7 @@ const Add = () => {
             <h1 class="text-3xl font-bold text-center text-gray-800 mt-4 mb-4">Edit Page</h1>
             <PlayerList players={posts} />
             <Addplayer />
+            <Footer />
         </div>
     );
 };
