@@ -23,7 +23,6 @@ const Leaders = () => {
 
     return (
         <div>
-            <h1>League Leaders Page</h1>
             <Header />
             <LeadersList players={posts} />
         </div>

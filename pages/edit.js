@@ -24,10 +24,10 @@ const Add = () => {
 
     return (
         <div>
-            <h1>Edit Page</h1>
             <Header />
-            <Addplayer />
+            <h1 class="text-3xl font-bold text-center text-gray-800 mt-4 mb-4">Edit Page</h1>
             <PlayerList players={posts} />
+            <Addplayer />
         </div>
     );
 };
