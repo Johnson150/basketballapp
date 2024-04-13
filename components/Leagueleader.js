@@ -31,11 +31,11 @@ const LeadersList = () => {
     const renderTopPlayers = (category) => {
         const topPlayers = sortPlayersByCategory(category);
         return (
-            <div>
-                <h2>Top 5 Players in {category}</h2>
-                <ul>
+            <div className="mt-5">
+                <h2 className="text-xl font-semibold text-gray-800">Top 5 Players in {category}</h2>
+                <ul className="list-disc pl-5">
                     {topPlayers.map((player, index) => (
-                        <li key={index}>
+                        <li key={index} className="py-1">
                             {player.name} - {player[category]}
                         </li>
                     ))}
@@ -45,11 +45,15 @@ const LeadersList = () => {
     };
 
     return (
-        <div>
-            <h1>League Leaders</h1>
-            <div>
-                <label htmlFor="category">Select Category: </label>
-                <select id="category" onChange={(e) => setCategory(e.target.value)}>
+        <div className="container mx-auto px-4">
+            <h1 className="text-2xl font-bold text-center text-gray-900 my-6">League Leaders</h1>
+            <div className="max-w-md mx-auto">
+                <label htmlFor="category" className="block text-gray-700 font-medium mb-2">Select Category:</label>
+                <select
+                    id="category"
+                    className="form-select block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    onChange={(e) => setCategory(e.target.value)}
+                >
                     <option value="MPG">MPG</option>
                     <option value="PPG">PPG</option>
                     <option value="RPG">RPG</option>
