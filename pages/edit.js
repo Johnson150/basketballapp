@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PlayerList from '../components/Playerlist';
 import Addplayer from '../components/Addplayer';
 import Header from '../components/header';
-import Search from '../components/Search';
 const Add = () => {
     const [posts, setPosts] = useState([]);
 
@@ -25,9 +24,8 @@ const Add = () => {
 
     return (
         <div>
-            <h1>Add Page</h1>
+            <h1>Edit Page</h1>
             <Header />
-            <Search />
             <Addplayer />
             <PlayerList players={posts} />
         </div>

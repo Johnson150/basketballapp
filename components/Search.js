@@ -1,20 +1,21 @@
-"use client";
+"use client"
 import React, { useState } from "react";
 
-const PlayersList = ({ player }) => {
-    const [inputValue, setInputValue] = useState(""); // To hold the value of the input field
-    const [searchTerm, setSearchTerm] = useState(""); // To hold the value used for filtering
+const PlayersList = ({ player = [] }) => { // Assuming 'player' is meant to be an array and defaulting it to an empty array
+    const [inputValue, setInputValue] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
     const handleSearch = () => {
-        setSearchTerm(inputValue.toLowerCase()); // Update searchTerm with the current inputValue when search is clicked
+        setSearchTerm(inputValue.toLowerCase());
     };
 
-    const filteredPlayers = player.filter((player) =>
-        player.name.toLowerCase().includes(searchTerm)
+    // Ensuring the search is case-insensitive even if searchTerm is set directly to inputValue
+    const filteredPlayers = player.filter(p =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     console.log("Filtered Players:", filteredPlayers);
@@ -33,8 +34,8 @@ const PlayersList = ({ player }) => {
                 Search
             </button>
             <ul>
-                {filteredPlayers.map((player) => (
-                    <SearchPlayer key={player.id} player={player} />
+                {filteredPlayers.map(p => (
+                    <SearchPlayer key={p.id} player={p} />
                 ))}
             </ul>
         </div>
