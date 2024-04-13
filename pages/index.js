@@ -1,38 +1,19 @@
-import { useEffect, useState } from 'react';
-import PlayerList from "../components/Playerlist";
-import Addplayer from "../components/Addplayer";
-import LeagueLeaders from "../components/Leagueleader";
 import Header from "../components/header";
 import '../app/globals.css';
+import Footer from "@/components/footer";
 
-const Page = () => {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('http://localhost:3000/api/post', { cache: "no-cache" })
-        if (!res.ok) {
-          throw new Error("Failed to fetch data")
-        }
-        const data = await res.json()
-        setPosts(data)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-    }
-
-    fetchData()
-  }, []) // Empty dependency array ensures useEffect runs only once on component mount
-
+const Home = () => {
   return (
-    <main className="flex min-h-screen flex-col justify-between p-24">
+    <div>
       <Header />
-      <PlayerList players={posts} />
-      <Addplayer />
-      <LeagueLeaders players={posts} />
-    </main>
-  )
-}
+      <div className="container mx-auto px-4">
+        <h1 className="text-3xl font-bold text-center my-8">Welcome to NBA Player App</h1>
+        <p className="text-xl text-gray-700 text-center">Your job is to update the player database you can Delete, Update and Add new players to the NBA player app, For the 2023 - 2024 NBA season.</p>
 
-export default Page;
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default Home;
