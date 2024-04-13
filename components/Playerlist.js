@@ -19,9 +19,11 @@ const PlayerList = ({ players }) => {
     };
 
     // Filter the players based on search term
+   // Filter the players based on search term
     const filteredPlayers = players.filter((player) =>
-        player.name.toLowerCase().includes(searchTerm.toLowerCase())
+        player.name && player.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
 
     return (
         <div>
