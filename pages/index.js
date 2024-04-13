@@ -3,6 +3,7 @@ import PlayerList from "../components/Playerlist";
 import Addplayer from "../components/Addplayer";
 import LeagueLeaders from "../components/Leagueleader";
 import Header from "../components/header";
+import '../app/globals.css';
 
 const Page = () => {
   const [posts, setPosts] = useState([]);
