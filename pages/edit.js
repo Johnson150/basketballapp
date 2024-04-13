@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PlayerList from '../components/Playerlist';
 import Addplayer from '../components/Addplayer';
 import Header from '../components/header';
+import '../app/globals.css';
 const Add = () => {
     const [posts, setPosts] = useState([]);
 

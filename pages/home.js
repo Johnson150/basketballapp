@@ -1,5 +1,5 @@
 import Header from "../components/header";
-
+import '../app/globals.css';
 const Home = () => {
     return (
         <div>
