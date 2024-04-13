@@ -44,7 +44,7 @@ const Addplayer = () => {
             </button>
             <Modal showModal={showModal} setShowModal={setShowModal}>
                 <form className="w-full px-5 pb-6" onSubmit={handleSubmit}>
-                    <h1>Add a New Player</h1>
+                    <h1 className="text-3xl font-bold text-gray-800 my-4 mx-auto text-center">Add a New Player</h1>
                     <input
                         type="text"
                         placeholder="Name"

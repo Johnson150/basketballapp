@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 
-const PlayersList = ({ player = [] }) => { // Assuming 'player' is meant to be an array and defaulting it to an empty array
+const PlayersList = ({ player = [] }) => {
     const [inputValue, setInputValue] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -13,7 +13,6 @@ const PlayersList = ({ player = [] }) => { // Assuming 'player' is meant to be a
         setSearchTerm(inputValue.toLowerCase());
     };
 
-    // Ensuring the search is case-insensitive even if searchTerm is set directly to inputValue
     const filteredPlayers = player.filter(p =>
         p.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -27,10 +26,10 @@ const PlayersList = ({ player = [] }) => { // Assuming 'player' is meant to be a
                 placeholder="Search by name..."
                 value={inputValue}
                 onChange={handleInputChange}
-                className="p-2 my-2"
+                className="p-2 my-2 w-full" // Ensuring the input field uses full width
             />
 
-            <button onClick={handleSearch} className="p-2 my-2 bg-blue-500 text-white">
+            <button onClick={handleSearch} className="p-2 mt-2 bg-blue-500 text-white w-full">
                 Search
             </button>
             <ul>

@@ -144,7 +144,7 @@ const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
             {showDeleteModal && (
                 <Modal showModal={showDeleteModal} setShowModal={setShowDeleteModal}>
                     <div>
-                        <p>Are you sure you want to delete this player?</p>
+                        <p className="text-lg text-grey-600 font-semibold my-2">Are you sure you want to delete this player?</p>
                         <button onClick={() => handleDeletePlayer(player.id)} className="bg-red-700 text-white mr-2 font-bold">Yes</button>
                         <button onClick={() => setShowDeleteModal(false)} className="bg-blue-800 text-white font-bold">No</button>
                     </div>
