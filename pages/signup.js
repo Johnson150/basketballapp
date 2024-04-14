@@ -1,5 +1,4 @@
-// pages/signup.js
-
+import '../app/globals.css';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -22,13 +21,17 @@ export default function SignUp() {
 
       if (response.ok) {
         setMessage('User registered successfully');
-        router.push('/'); // Redirect to another page after successful registration
+        router.push('/');
       } else {
         const data = await response.json();
-        setMessage(data.message || 'Error registering user');
+        if (data.message === 'Email or Password already in use') {
+          setMessage('This email is already registered. Please use a different email or log in.');
+        } else {
+          setMessage(data.message || 'Error registering user');
+        }
       }
     } catch (error) {
-      setMessage('Error registering user');
+      setMessage('Failed to register. Please try again.');
       console.error('Error registering user:', error);
     }
   };
@@ -70,6 +73,12 @@ export default function SignUp() {
               type="submit"
             >
               Sign Up
+            </button>
+            <button
+              onClick={() => window.location.href = '/'}
+              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Cancel
             </button>
           </div>
         </form>

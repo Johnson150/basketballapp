@@ -14,12 +14,11 @@ export default function LogoutPage() {
 
   const handleLogout = async () => {
     try {
-      await signOut({ redirect: false }); // Sign out without redirecting
-      // Redirect to the home page or any other desired page after logout
+      await signOut({ redirect: false });
       router.push('/');
     } catch (error) {
       console.error('Logout error:', error);
-      // Handle logout error, if any
+
     }
   };
 

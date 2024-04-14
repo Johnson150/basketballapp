@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import LeadersList from '../components/Leagueleader';
-import Header from '../components/header';
+import Header from '../components/header'; // Ensure proper capitalization for imports
 import '../app/globals.css';
-import Footer from '../components/footer';
+import Footer from '../components/footer'; // Ensure proper capitalization for imports
+
 const Leaders = () => {
     const [posts, setPosts] = useState([]);
 
@@ -24,9 +25,11 @@ const Leaders = () => {
     }, []);
 
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <Header />
-            <LeadersList players={posts} />
+            <main className="flex-grow">
+                <LeadersList players={posts} />
+            </main>
             <Footer />
         </div>
     );

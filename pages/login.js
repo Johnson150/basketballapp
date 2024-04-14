@@ -1,33 +1,33 @@
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import '../app/globals.css';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const router = useRouter(); // Import and initialize useRouter
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
 
     try {
-      // Call the signIn function with email and password
       const result = await signIn('credentials', {
         email,
         password,
-        redirect: false, // Don't redirect on success, handle it manually
+        redirect: false,
       });
 
-      // Check if signIn was successful
       if (!result.error) {
-        // Redirect to the home page or any other desired page on success
-        router.push('/home'); // Redirect to the home page
+        router.push('/home');
       } else {
-        // Handle login error
-        setError(result.error);
+        if (result.error.includes("incorrect password")) {
+          setError("The password you entered is incorrect. Please try again.");
+        } else {
+          setError(result.error);
+        }
       }
     } catch (error) {
       console.error('Login error:', error);
@@ -35,27 +35,11 @@ export default function LoginPage() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    try {
-        const result = await signIn('google', { redirect: false });
-        if (!result.error) {
-            router.push('/home'); // Redirect to the home page
-        } else {
-            setError('Google sign-in error: ' + result.error);
-        }
-    } catch (error) {
-        console.error('Google sign-in error:', error);
-        setError('An unexpected error occurred');
-    }
-};
-
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-        </div>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your NBA Player App account</h2>
+
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
@@ -73,7 +57,7 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div>
+            <div className="pt-4">  {/* Added padding-top */}
               <label htmlFor="password" className="sr-only">Password</label>
               <input
                 id="password"
@@ -89,7 +73,7 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {error && <p className="text-red-500">{error}</p>}
+          {error && <p className="text-red-500 text-center">{error}</p>}
 
           <div>
             <button
@@ -100,27 +84,15 @@ export default function LoginPage() {
             </button>
           </div>
         </form>
-        <div>Or</div>
-        <div className="flex justify-center">
-          <button
-            type="button"
-            onClick={handleGoogleSignIn}
-            className="button"
-            style={{
-              '--provider-bg': '#fff',
-              '--provider-dark-bg': '#fff',
-              '--provider-color': '#000',
-              '--provider-dark-color': '#000',
-              '--provider-bg-hover': 'rgba(255, 255, 255, 0.8)',
-              '--provider-dark-bg-hover': 'rgba(255, 255, 255, 0.8)'
-            }}
-          >
-            <img loading="lazy" height="24" width="24" id="provider-logo" src="https://authjs.dev/img/providers/google.svg" />
-            <span>Sign in with Google</span>
-          </button>
-        </div>
-        <div><Link href="/signup" className="text-xl text-blue-700 text-center">Sign Up</Link></div>
+
+        <button
+          onClick={() => window.location.href = '/signup'}
+          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          Sign Up
+        </button>
       </div>
     </div>
   );
-}
+};
+

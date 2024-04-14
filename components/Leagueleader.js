@@ -22,13 +22,10 @@ const LeadersList = () => {
         fetchData();
     }, []);
 
-    // Function to sort players based on selected category
     const sortPlayersByCategory = (category) => {
         return posts.sort((a, b) => b[category] - a[category]).slice(0, 5);
     };
 
-    // Function to render list of top players for selected category
-    // Function to render list of top players for selected category
     const renderTopPlayers = (category) => {
         const topPlayers = sortPlayersByCategory(category);
         return (
