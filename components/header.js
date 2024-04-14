@@ -5,7 +5,7 @@ const Header = () => {
     const router = useRouter();
 
     const navItems = [
-        { label: "Home", href: "/" },
+        { label: "Home", href: "/home" },
         { label: "Modify", href: "/edit" },
         { label: "League Leaders", href: "/leader" },
         { label: "Logout", href: "/logout" },

@@ -1,5 +1,5 @@
 import GoogleProvider from 'next-auth/providers/google';
-import CredentialsProvider from "next-auth/providers/credentials";
+import CredentialsProvider from 'next-auth/providers/credentials';
 import prisma from './prismadb';
 
 const authConfig = {
@@ -49,6 +49,16 @@ const authConfig = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  callbacks: {
+    async signIn({ account, profile }) {
+      if (account.provider === 'google') {
+        // Only allow sign-in if the Google account is verified and uses a specific domain
+        return profile.email_verified && profile.email.endsWith('@example.com');
+      }
+      // Perform custom verification for other providers
+      return true;
+    },
+  },
 };
 
 export default authConfig;
