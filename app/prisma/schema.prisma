@@ -13,9 +13,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model dbuser {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String @unique
+  password String @unique
+}
+
+model Player {
   id   String  @id @default(auto()) @map("_id") @db.ObjectId
-  email String  @unique
-  password  String @unique
+  name String?
+  team String?
+  MPG  Float?
+  PPG  Float?
+  RPG  Float?
+  APG  Float?
+  SPG  Float?
+  BPG  Float?
 }
