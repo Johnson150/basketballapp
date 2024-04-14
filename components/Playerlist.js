@@ -19,7 +19,7 @@ const PlayerList = ({ players }) => {
     };
 
     // Filter the players based on search term
-   // Filter the players based on search term
+    // Filter the players based on search term
     const filteredPlayers = players.filter((player) =>
         player.name && player.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -27,19 +27,17 @@ const PlayerList = ({ players }) => {
 
     return (
         <div>
-            {/* Search input */}
             <input
                 type="text"
                 placeholder="Search by name..."
                 value={inputValue}
                 onChange={handleInputChange}
-                className="p-2 my-2"
+                className="p-2 ml-4 my-2 border-2"
             />
-            <button onClick={handleSearch} className="p-2 my-2 bg-blue-500 text-white">
+            <button onClick={handleSearch} className="p-2 ml-2 my-2 bg-blue-500 text-white">
                 Search
             </button>
 
-            {/* Render the list of players */}
             <ul>
                 {filteredPlayers.map((player) => (
                     <Player

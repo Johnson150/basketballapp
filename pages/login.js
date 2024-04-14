@@ -24,9 +24,9 @@ export default function LoginPage() {
         router.push('/home');
       } else {
         if (result.error.includes("incorrect password")) {
-          setError("The password you entered is incorrect. Please try again.");
+          setError("The email or password you entered is incorrect. Please try again.");
         } else {
-          setError(result.error);
+          setError("The email or password you entered is incorrect. Please try again.");
         }
       }
     } catch (error) {
@@ -57,7 +57,7 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="pt-4">  {/* Added padding-top */}
+            <div className="pt-4">
               <label htmlFor="password" className="sr-only">Password</label>
               <input
                 id="password"

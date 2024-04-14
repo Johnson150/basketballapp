@@ -4,6 +4,7 @@ import Addplayer from '../components/Addplayer';
 import Header from '../components/header';
 import '../app/globals.css';
 import Footer from '../components/footer';
+
 const Add = () => {
     const [posts, setPosts] = useState([]);
 
@@ -22,15 +23,21 @@ const Add = () => {
         };
 
         fetchData();
-    }, []); // Empty dependency array ensures useEffect only runs once on component mount
+    }, []);
 
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <Header />
-            <h1 class="text-3xl font-bold text-center text-gray-800 mt-4 mb-4">Edit Page</h1>
-            <PlayerList players={posts} />
-            <Addplayer />
-            <Footer />
+            <h1 className="text-3xl font-bold text-center text-gray-800 mt-4 mb-4">Modify Player Page</h1>
+            <div className="flex-grow">
+                <PlayerList players={posts} />
+                <div className="py-8 ml-4">
+                    <Addplayer />
+                </div>
+            </div>
+            <div>
+                <Footer />
+            </div>
         </div>
     );
 };

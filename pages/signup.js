@@ -25,9 +25,9 @@ export default function SignUp() {
       } else {
         const data = await response.json();
         if (data.message === 'Email or Password already in use') {
-          setMessage('This email is already registered. Please use a different email or log in.');
+          setMessage('This email is already registered. Please use a different email to create account.');
         } else {
-          setMessage(data.message || 'Error registering user');
+          setMessage('This email is already registered. Please use a different email.');
         }
       }
     } catch (error) {

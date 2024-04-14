@@ -45,7 +45,7 @@ const LeadersList = () => {
 
     return (
         <div className="container mx-auto px-4">
-            <h1 className="text-2xl font-bold text-center text-gray-900 my-6">League Leaders</h1>
+            <h1 className="text-3xl font-bold text-center text-gray-800 mt-4 mb-4">League Leaders</h1>
             <div className="max-w-md mx-auto">
                 <label htmlFor="category" className="block text-gray-700 font-medium mb-2">Select Category:</label>
                 <select
