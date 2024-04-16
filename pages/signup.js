@@ -2,12 +2,14 @@ import '../app/globals.css';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
+// sign up page for new users
 export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const router = useRouter();
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

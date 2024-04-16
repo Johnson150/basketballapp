@@ -3,12 +3,15 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import '../app/globals.css';
 
+// Login Page sent to index for running on initital visit
+
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const router = useRouter();
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);

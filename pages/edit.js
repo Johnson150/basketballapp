@@ -5,9 +5,11 @@ import Header from '../components/header';
 import '../app/globals.css';
 import Footer from '../components/footer';
 
+// Modify Player Page
 const Add = () => {
     const [posts, setPosts] = useState([]);
 
+    // useEffect hook to fetch data from the server
     useEffect(() => {
         const fetchData = async () => {
             try {

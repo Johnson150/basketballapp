@@ -2,16 +2,20 @@ import { useState, useEffect } from 'react';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
+// Logout Page
+
 export default function LogoutPage() {
   const [confirmLogout, setConfirmLogout] = useState(false);
   const router = useRouter();
 
+  // Handle logout when confirmLogout state is true
   useEffect(() => {
     if (confirmLogout) {
       handleLogout();
     }
   }, [confirmLogout]);
 
+  // Logic to handle logout
   const handleLogout = async () => {
     try {
       await signOut({ redirect: false });
@@ -22,6 +26,7 @@ export default function LogoutPage() {
     }
   };
 
+  // Set confirmLogout state to true
   const handleConfirmLogout = () => {
     setConfirmLogout(true);
   };

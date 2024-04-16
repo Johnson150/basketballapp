@@ -4,9 +4,12 @@ import Header from '../components/header'; // Ensure proper capitalization for i
 import '../app/globals.css';
 import Footer from '../components/footer'; // Ensure proper capitalization for imports
 
+// Leaders Page for best performing players
+
 const Leaders = () => {
     const [posts, setPosts] = useState([]);
 
+    // useEffect hook to fetch data from the server
     useEffect(() => {
         const fetchData = async () => {
             try {
