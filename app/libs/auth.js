@@ -1,7 +1,8 @@
-import GoogleProvider from 'next-auth/providers/google';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google'; // import google provider for authconfig
+import CredentialsProvider from 'next-auth/providers/credentials'; 
 import prisma from './prismadb';
 
+// authConfig object to configure the authentication providers, used in the NextAuth function
 const authConfig = {
   providers: [
     CredentialsProvider({
@@ -34,8 +35,8 @@ const authConfig = {
         if (dbUser && dbUser.password === credentials.password) {
           console.log('User authorized successfully:', dbUser);
           return {
-            ...dbUser, // You should return the user object from the database
-            id: dbUser.id, // Ensure you have the 'id' field in your user object
+            ...dbUser, // should return the user object from the database
+            id: dbUser.id, 
           };
         }
 
@@ -44,6 +45,7 @@ const authConfig = {
       },
     }),
 
+    // set up GoogleProvider with client ID and client secret
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -52,7 +54,7 @@ const authConfig = {
   callbacks: {
     async signIn({ account, profile }) {
       if (account.provider === 'google') {
-        // Only allow sign-in if the Google account is verified and uses a specific domain
+        // Only allows sign-in if the Google account is verified and uses a specific domain
         return profile.email_verified && profile.email.endsWith('@example.com');
       }
       // Perform custom verification for other providers

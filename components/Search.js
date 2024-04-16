@@ -1,14 +1,17 @@
 "use client"
 import React, { useState } from "react";
 
+// Component to display a list of players
 const PlayersList = ({ player = [] }) => {
     const [inputValue, setInputValue] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
 
+    // Function to handle input change
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
+    // Function to handle search
     const handleSearch = () => {
         setSearchTerm(inputValue.toLowerCase());
     };

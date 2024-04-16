@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+
+// Component to edit player details
 const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
     const Router = useRouter();
     const [showEditModal, setShowEditModal] = useState(false);
     const [playerToEdit, setPlayerToEdit] = useState({ ...player });
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+    // function to handle input field changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setPlayerToEdit((prevState) => ({
@@ -17,6 +20,7 @@ const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
         }));
     };
 
+    // function to handle form submission
     const handleEditSubmit = (e) => {
         e.preventDefault();
         axios.patch(`/api/post/${player.id}`, playerToEdit)
@@ -32,7 +36,8 @@ const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
                 Router.refresh();
             });
     };
-
+    
+    // function to handle player deletion using player id
     const handleDeletePlayer = () => {
         axios.delete(`/api/post/${player.id}`)
             .then((res) => {
@@ -141,6 +146,7 @@ const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
                     </form>
                 </Modal>
             )}
+            {/* Logic for conditional Modal */}
             {showDeleteModal && (
                 <Modal showModal={showDeleteModal} setShowModal={setShowDeleteModal}>
                     <div>

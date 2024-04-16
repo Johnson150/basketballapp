@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+// Header component to display the navigation bar
 const Header = () => {
     const router = useRouter();
 

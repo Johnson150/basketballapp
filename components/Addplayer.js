@@ -4,11 +4,14 @@ import Modal from "./Modal";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
+// Component to add a new player
 const Addplayer = () => {
     const Router = useRouter()
+    //states to handle modal visibility and input fields
     const [showModal, setShowModal] = useState(false);
     const [input, setInput] = useState({});
 
+    // function to handle input field changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         // Convert numeric fields from strings to numbers
@@ -19,8 +22,10 @@ const Addplayer = () => {
         }));
     };
 
+    // function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
+        //axios used to post data to the server
         axios.post("/api/post", input)
             .then((res) => {
                 console.log(res);
@@ -42,6 +47,7 @@ const Addplayer = () => {
                 className="bg-blue-700 text-white p-3 cursor-pointer">
                 Add New Player
             </button>
+            {/* Overlay */}
             <Modal showModal={showModal} setShowModal={setShowModal}>
                 <form className="w-full px-5 pb-6" onSubmit={handleSubmit}>
                     <h1 className="text-3xl font-bold text-gray-800 my-4 mx-auto text-center">Add a New Player</h1>

@@ -22,10 +22,11 @@ const LeadersList = () => {
         fetchData();
     }, []);
 
+    // Sort players by category
     const sortPlayersByCategory = (category) => {
         return posts.sort((a, b) => b[category] - a[category]).slice(0, 5);
     };
-
+    // Render top players
     const renderTopPlayers = (category) => {
         const topPlayers = sortPlayersByCategory(category);
         return (

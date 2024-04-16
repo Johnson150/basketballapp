@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Player from "./Player";
 
+// Component to display a list of players
 const PlayerList = ({ players }) => {
     const [showEditModal, setShowEditModal] = useState(false);
     const [playerToEdit, setPlayerToEdit] = useState({});
@@ -9,11 +10,12 @@ const PlayerList = ({ players }) => {
     const [inputValue, setInputValue] = useState(""); // To hold the value of the input field
     const [searchTerm, setSearchTerm] = useState(""); // To hold the value used for filtering
 
-
+    // Function to handle input change
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
+    // Function to handle search
     const handleSearch = () => {
         setSearchTerm(inputValue);
     };

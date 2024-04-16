@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 // url: http://localhost:3000/api/post
 
+// function to handle POST requests to create a new player data, returns new player if successful, or an error message if not
 export const POST = async (req) => {
     try {
         const body = await req.json();
@@ -21,15 +22,14 @@ export const POST = async (req) => {
         });
         return NextResponse.json(newPlayer);
     } catch (error) {
-        console.error(error); // This will help you see the error details in the server logs
+        console.error(error); //error details in the server logs
         return NextResponse.json(
-            { message: "Error creating player", error: error.message }, // Adjusted the message for clarity
-            { status: 500 }
+            { message: "Error creating player", error: error.message }, 
         );
     }
 };
 
-
+// function to handle GET requests to return all players, used to display all players
 export const GET = async () => {
     try {
         const players = await client.player.findMany();
@@ -43,6 +43,7 @@ export const GET = async () => {
     }
 }
 
+// fetches players by using the GET function
 export const FETCH = async () => {
     return await GET();
 }

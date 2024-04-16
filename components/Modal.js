@@ -1,5 +1,6 @@
 import React from "react";
 
+// Overlay modal component, props for better functionality
 const Modal = ({ children, showModal, setShowModal }) => {
     return (
         <>
