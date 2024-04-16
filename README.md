@@ -11,9 +11,12 @@ This is a web application for managing or viewing a database of NBA players and 
 - [License](#license)
 
 ## Installation
-1. cd to project folder
+1. cd to project folder -- cd path/BASKETBALLAPP
 2. Run command: npm install
-3. To start web app, run command: npm run dev
+3. cd to app folder within project folder -- cd app/
+4. Run command: npx prisma generate
+5. Run command: npx prisma db push
+6. To start web app, run command: npm run dev
 
 ## Usage
 Once the Application is deployed, open http://localhost:3000 with your browser to see the result. Users can view multiple different stats from the NBA Season. This data is pulled from a mongoDB database and admins have acces to this data to make any changes as needed.
@@ -34,6 +37,9 @@ Once the Application is deployed, open http://localhost:3000 with your browser t
 On GitHub:
 
 Danrel Lu : Naki-Cloud
+
 Johnson Giang : Johnson150
+
 Navkirat Puri : NavkiratPuri
+
 Isaac Marfo : isaacm31
