@@ -9,6 +9,7 @@ const Header = () => {
         { label: "Home", href: "/home" },
         { label: "Modify", href: "/edit" },
         { label: "League Leaders", href: "/leader" },
+        { label: "Trade", href: "/trade" },
         { label: "Logout", href: "/logout" },
     ];
 
