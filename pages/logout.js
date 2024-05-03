@@ -9,22 +9,22 @@ export default function LogoutPage() {
   const router = useRouter();
 
   // Handle logout when confirmLogout state is true
-  useEffect(() => {
-    if (confirmLogout) {
-      handleLogout();
-    }
-  }, [confirmLogout]);
 
   // Logic to handle logout
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     try {
       await signOut({ redirect: false });
       router.push('/');
     } catch (error) {
       console.error('Logout error:', error);
-
     }
-  };
+  }, [router]); // Dependencies of handleLogout
+
+  useEffect(() => {
+    if (confirmLogout) {
+      handleLogout();
+    }
+  }, [confirmLogout, handleLogout]);
 
   // Set confirmLogout state to true
   const handleConfirmLogout = () => {
