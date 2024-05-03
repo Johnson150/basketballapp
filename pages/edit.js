@@ -13,7 +13,7 @@ const Add = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('http://localhost:3000/api/post', { cache: "no-cache" });
+                const res = await fetch('/api/post', { cache: "no-cache" });
                 if (!res.ok) {
                     throw new Error("Failed to fetch data");
                 }
