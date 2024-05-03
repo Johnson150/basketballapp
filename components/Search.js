@@ -26,7 +26,7 @@ const PlayersList = ({ player = [] }) => {
         <div>
             <input
                 type="text"
-                placeholder="Search by name..."
+                placeholder="Search by player name..."
                 value={inputValue}
                 onChange={handleInputChange}
                 className="p-2 my-2 w-full" // Ensuring the input field uses full width
