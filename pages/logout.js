@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import '../app/globals.css';
 
 export default function LogoutPage() {
   const [confirmLogout, setConfirmLogout] = useState(false);
