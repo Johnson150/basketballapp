@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import LeadersList from '../components/Leagueleader';
-import Header from '../components/header'; // Ensure proper capitalization for imports
+import Header from '../components/header';
 import '../app/globals.css';
-import Footer from '../components/footer'; // Ensure proper capitalization for imports
+import Footer from '../components/footer';
 
 // Leaders Page for best performing players
 

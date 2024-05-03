@@ -17,7 +17,7 @@ const Header = () => {
         <>
             <div className="flex items-center justify-between bg-orange-800 text-white shadow-lg w-full px-4 py-2">
                 <div className="flex items-center space-x-4">
-                    <image src="/NBA logo.jpg" alt="NBA Logo" className="h-12 w-auto" />
+                    <img src="/NBA logo.jpg" alt="NBA Logo" className="h-12 w-auto" />
                     <h1 className="text-3xl font-bold text-white">NBA Player App</h1>
                 </div>
                 <ul className="flex justify-center gap-10">
