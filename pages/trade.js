@@ -13,7 +13,7 @@ const TradeSimulator = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('http://localhost:3000/api/post', { cache: "no-cache" });
+                const response = await fetch('/api/post', { cache: "no-cache" });
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");
                 }
