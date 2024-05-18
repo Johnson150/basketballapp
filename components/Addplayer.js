@@ -7,11 +7,10 @@ import { useRouter } from "next/navigation";
 // Component to add a new player
 const Addplayer = () => {
     const Router = useRouter()
-    //states to handle modal visibility and input fields
     const [showModal, setShowModal] = useState(false);
     const [input, setInput] = useState({});
 
-    // function to handle input field changes
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         // Convert numeric fields from strings to numbers
@@ -26,7 +25,7 @@ const Addplayer = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         //axios used to post data to the server
-        axios.post("/api/post", input)
+        axios.post("/api/player", input)
             .then((res) => {
                 console.log(res);
             })
