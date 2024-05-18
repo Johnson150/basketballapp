@@ -2,12 +2,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import axios from "axios";
-<<<<<<< Updated upstream
 import { useRouter } from "next/navigation";
-=======
-import { useRouter } from "next/router";
-import EditPlayerForm from './EditPlayerForm';
->>>>>>> Stashed changes
 
 // Component to edit player details
 const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
@@ -41,8 +36,7 @@ const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
                 Router.refresh();
             });
     };
-<<<<<<< Updated upstream
-    
+
     // function to handle player deletion using player id
     const handleDeletePlayer = () => {
         axios.delete(`/api/post/${player.id}`)
@@ -57,18 +51,6 @@ const Player = ({ player, onPlayerUpdate, onPlayerDelete }) => {
                 setShowDeleteModal(false);
                 Router.refresh();
             });
-=======
-
-    const handleDeletePlayer = async () => {
-        try {
-            await axios.delete(`/api/player/${player.id}`);
-            if (onPlayerDelete) onPlayerDelete(player.id);
-            setShowDeleteModal(false);
-        } catch (err) {
-            console.error(err);
-            setError(err.response?.data?.message || 'An error occurred while deleting the player.');
-        }
->>>>>>> Stashed changes
     };
 
     return (
