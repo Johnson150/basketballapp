@@ -1,5 +1,6 @@
 import client from "@/app/libs/prismadb";
 import { NextResponse } from "next/server";
+import bcrypt from "bcrypt"
 
 // URL: http://localhost:3000/api/dbuser
 
@@ -8,14 +9,30 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
     try {
+        // user.password= await bcrypt.hashSync(user.password, parseInt(process.env.BCRYPT_SALT))
+        // console.log(user);
         const body = await req.json();
         const { email, password } = body;
+         // Hash the password using bcrypt with asynchronous method
+        const hashedPassword = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT));
+
+        // Now create the new user in the database with the hashed password
         const newDbUser = await client.dbuser.create({
             data: {
                 email,
-                password
+                password: hashedPassword
             },
         });
+
+
+
+
+        // const newDbUser = await client.dbuser.create({
+        //     data: {
+        //         email,
+        //         password
+        //     },
+        // });
         return NextResponse.json(newDbUser);
     } catch (error) {
         console.error(error);
