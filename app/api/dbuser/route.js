@@ -7,7 +7,7 @@ import bcrypt from "bcrypt"
 // handles POST requests of email and password to create a new dbuser, returns new dbuser if
 // successful, or an error message if not
 
-export const POST = async (req) => {
+export const POST = async (req,res) => {
     try {
         // user.password= await bcrypt.hashSync(user.password, parseInt(process.env.BCRYPT_SALT))
         // console.log(user);
@@ -44,7 +44,7 @@ export const POST = async (req) => {
 };
 
 // handles GET requests to return all dbusers 
-export const GET = async () => {
+export const GET = async (req,res) => {
     try {
         const dbUsers = await client.dbuser.findMany();
         return NextResponse.json(dbUsers);
